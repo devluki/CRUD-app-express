@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+  h1= title
+
+  if errors.errors !== undefined
+    each message in errors.errors
+      p=message
+
+  //- if errors !== undefined
+  //-   each message in errors
+  //-     p=message
+
+
+  form(method='post')
+    p 
+      label Title 
+      br
+      input(type='text' name='title' value=body.title|| '')
+    p 
+      label Content 
+      br
+      textarea(name='description')=body.description || ''
+    p 
+      input(type='submit' value='Save')
+      

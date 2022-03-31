@@ -9,12 +9,14 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    nav
+      ul
+        +item('Home','/')
+        +item('News','/news')
+        +item('Quiz','/quiz')
+        +item('Admin','/admin')
     //- span=path
-    ul
-      +item('Home','/')
-      +item('News','/news')
-      +item('Quiz','/quiz')
-      +item('Admin','/admin')
+
     //- ul 
     //-   li 
     //-     a(href="/") Home

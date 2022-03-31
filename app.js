@@ -1,16 +1,35 @@
 var createError = require('http-errors');
+var cookieSession = require('cookie-session')
+
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var config = require('./config');
+var mongoose = require('mongoose');
+
+// mongoose.connect('mongodb://localhost/test', {
+//   useNewUrlParser: true
+// })
+mongoose.connect(config.db, {
+  useNewUrlParser: true
+})
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  console.log('db connect');
+})
 
 var indexRouter = require('./routes/index');
 var newsRouter = require('./routes/news');
 var quizRouter = require('./routes/quiz');
 var adminRouter = require('./routes/admin');
 
-
-
+// mongodb+srv://admin:<password>@cluster0.ktjzp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+// W6BOcG4qtZugZuya
+// mongodb+srv://admin:W6BOcG4qtZugZuya@cluster0.ktjzp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+// 
 var app = express();
 
 // view engine setup
@@ -24,6 +43,14 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(cookieSession({
+  name: 'session',
+  // keys: ['123456'],
+  // maxAge: 24 * 60 * 60 * 1000
+  keys: config.keySession,
+  maxAge: config.maxAgeSession
+}))
 
 
 app.use((req, res, next) => {
