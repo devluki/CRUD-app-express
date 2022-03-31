@@ -2,4 +2,22 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+   if show
+    form(method='post')
+      p What is your favorite programming language?
+      ul 
+        each item in data 
+          li 
+            label=item.title
+            input(type='radio' name='quiz' value=item._id)
+
+      input(type='submit' value='Vote')
+      p Vote to view the results
+   else 
+    h1 Vote have been casted
+    p Results
+    ul
+    each item in data 
+     li #{item.title}  votes: #{item.vote}  (#{Math.floor(item.vote/sum*100)}%)
+    
+    p Total no. of votes: #{sum}
