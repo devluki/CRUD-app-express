@@ -25,6 +25,7 @@ var indexRouter = require('./routes/index');
 var newsRouter = require('./routes/news');
 var quizRouter = require('./routes/quiz');
 var adminRouter = require('./routes/admin');
+var apiRouter = require('./routes/api');
 
 // mongodb+srv://admin:<password>@cluster0.ktjzp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 // W6BOcG4qtZugZuya
@@ -63,6 +64,7 @@ app.use('/', indexRouter);
 app.use('/news', newsRouter);
 app.use('/quiz', quizRouter);
 app.use('/admin', adminRouter);
+app.use('/api', apiRouter);
 
 
 // catch 404 and forward to error handler
