@@ -5,13 +5,14 @@ To run app, create account in Atlas MongoDB, create config.js in main catalog. I
 
 module.exports = 
 {
-    db: 'mongodb+srv://admin:<password>@cluster0.ktjzp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+    db: 'mongodb+srv://admin:password@cluster0.ktjzp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
     keySession: ['12345'],
     maxAgeSession: 24 * 60 * 60 * 1000
 }
   
-Replace <password> in db. 
+Replace password in db, with your key
   
 $ npm install
 
-Localhost is set to port: 3000 (bin/www.js -> line 15)
+
+Localhost is set to port: 3000.
