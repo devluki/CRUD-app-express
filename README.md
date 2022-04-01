@@ -16,3 +16,7 @@ $ npm install
 
 
 Localhost is set to port: 3000.
+
+
+Login: admin
+Password: 123
